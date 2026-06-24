@@ -6,11 +6,13 @@
   --metal-blue: #1f6f9e;
   --sky: #74d3ff;
   --steel: #8ea2b3;
-  --white: #f6fbff;
-  --muted: #b9c7d4;
-  --card-border: rgba(116, 211, 255, 0.28);
-  --card-bg: rgba(9, 26, 42, 0.72);
-  --shadow: 0 28px 70px rgba(0, 0, 0, 0.42);
+  --white: #f7fbfd;
+  --ink: #071a2d;
+  --ink-soft: #26394a;
+  --muted: #607284;
+  --card-border: rgba(65, 115, 150, 0.22);
+  --card-bg: rgba(244, 248, 250, 0.9);
+  --shadow: 0 30px 80px rgba(0, 0, 0, 0.42);
   font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
 }
 
@@ -25,10 +27,10 @@ body {
 }
 
 body {
-  /* Layered industrial background: dark steel base, soft blue light and a quiet technical grid. */
+  /* Dark steel environment with only broad, quiet light for contrast. */
   background:
-    radial-gradient(circle at 20% 8%, rgba(54, 171, 225, 0.22), transparent 28rem),
-    radial-gradient(circle at 82% 82%, rgba(33, 95, 136, 0.24), transparent 24rem),
+    radial-gradient(circle at 18% 10%, rgba(57, 137, 179, 0.18), transparent 29rem),
+    radial-gradient(circle at 85% 80%, rgba(61, 91, 118, 0.2), transparent 25rem),
     linear-gradient(145deg, #050c15 0%, #0a1828 46%, #121820 100%);
   color: var(--white);
   overflow-x: hidden;
@@ -40,10 +42,9 @@ body::before {
   content: "";
   pointer-events: none;
   background-image:
-    linear-gradient(rgba(116, 211, 255, 0.045) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(116, 211, 255, 0.045) 1px, transparent 1px),
-    radial-gradient(circle, rgba(203, 234, 249, 0.12) 1px, transparent 1.5px);
-  background-size: 44px 44px, 44px 44px, 28px 28px;
+    linear-gradient(rgba(116, 211, 255, 0.025) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(116, 211, 255, 0.025) 1px, transparent 1px);
+  background-size: 64px 64px;
   mask-image: radial-gradient(circle at center, black 0%, transparent 78%);
 }
 
@@ -93,14 +94,16 @@ body::before {
   border: 1px solid var(--card-border);
   border-radius: 28px;
   background:
-    linear-gradient(155deg, rgba(255, 255, 255, 0.1), transparent 28%),
-    linear-gradient(335deg, rgba(116, 211, 255, 0.1), transparent 38%),
+    linear-gradient(118deg, rgba(255, 255, 255, 0.82), rgba(255, 255, 255, 0) 24%),
+    linear-gradient(150deg, rgba(255, 255, 255, 0) 0 38%, rgba(110, 161, 190, 0.16) 48%, rgba(255, 255, 255, 0) 60%),
+    repeating-linear-gradient(96deg, rgba(255, 255, 255, 0.16) 0 1px, rgba(83, 111, 130, 0.035) 1px 3px),
+    linear-gradient(145deg, #fbfdfe 0%, #edf3f7 45%, #dce7ee 100%),
     var(--card-bg);
-  box-shadow: var(--shadow), inset 0 1px 0 rgba(255, 255, 255, 0.14);
-  backdrop-filter: blur(22px) saturate(128%);
-  -webkit-backdrop-filter: blur(22px) saturate(128%);
+  box-shadow: var(--shadow), inset 0 1px 0 rgba(255, 255, 255, 0.9), inset 0 -1px 0 rgba(73, 103, 125, 0.12);
+  backdrop-filter: blur(18px) saturate(112%);
+  -webkit-backdrop-filter: blur(18px) saturate(112%);
   transform: perspective(900px) rotateX(var(--rx)) rotateY(var(--ry)) translate3d(0, 0, 0);
-  animation: cardEnter 720ms ease-out both, floatCard 8s ease-in-out 900ms infinite;
+  animation: cardEnter 720ms ease-out both, floatCard 10s ease-in-out 900ms infinite;
 }
 
 .business-card::before,
@@ -113,7 +116,7 @@ body::before {
 .business-card::before {
   inset: -1px;
   border-radius: inherit;
-  background: linear-gradient(120deg, rgba(255, 255, 255, 0.2), transparent 22%, rgba(116, 211, 255, 0.18) 65%, transparent);
+  background: linear-gradient(120deg, rgba(255, 255, 255, 0.9), transparent 24%, rgba(61, 128, 165, 0.22) 68%, transparent);
   opacity: 0.62;
   mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
   mask-composite: exclude;
@@ -127,41 +130,45 @@ body::before {
   bottom: -20%;
   width: 220px;
   height: 220px;
-  border: 1px solid rgba(116, 211, 255, 0.14);
+  border: 1px solid rgba(37, 92, 125, 0.08);
   border-radius: 50%;
-  box-shadow: inset 0 0 0 32px rgba(116, 211, 255, 0.025), inset 0 0 0 62px rgba(255, 255, 255, 0.02);
+  box-shadow: inset 0 0 0 32px rgba(45, 118, 155, 0.025), inset 0 0 0 62px rgba(255, 255, 255, 0.22);
 }
 
 .card-pattern {
-  /* Subtle blueprint texture kept behind content for readability. */
   position: absolute;
   inset: 0;
   z-index: -1;
-  opacity: 0.52;
+  opacity: 0.22;
   background:
-    linear-gradient(90deg, transparent 0 22px, rgba(116, 211, 255, 0.09) 23px, transparent 24px),
-    linear-gradient(transparent 0 22px, rgba(116, 211, 255, 0.06) 23px, transparent 24px),
-    radial-gradient(circle at 18% 18%, rgba(116, 211, 255, 0.18) 1px, transparent 2px),
-    radial-gradient(circle at 74% 30%, rgba(255, 255, 255, 0.16) 1px, transparent 2px);
-  background-size: 48px 48px, 48px 48px, 18px 18px, 24px 24px;
+    linear-gradient(90deg, transparent 0 39px, rgba(37, 92, 125, 0.05) 40px, transparent 41px),
+    linear-gradient(transparent 0 39px, rgba(37, 92, 125, 0.035) 40px, transparent 41px);
+  background-size: 80px 80px;
 }
 
 .card-header {
   display: grid;
-  gap: 18px;
+  gap: 16px;
+  padding: 14px 16px 13px;
+  border: 1px solid rgba(65, 115, 150, 0.14);
+  border-radius: 20px;
+  background:
+    linear-gradient(135deg, rgba(255, 255, 255, 0.86), rgba(226, 236, 242, 0.58)),
+    repeating-linear-gradient(96deg, rgba(255, 255, 255, 0.18) 0 1px, rgba(58, 87, 108, 0.035) 1px 3px);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.78), 0 10px 26px rgba(29, 58, 78, 0.08);
 }
 
 .brand-logo {
-  width: min(76%, 292px);
+  width: min(78%, 286px);
   height: auto;
   object-fit: contain;
-  filter: drop-shadow(0 16px 22px rgba(0, 0, 0, 0.34));
+  filter: none;
 }
 
 .metal-line {
   width: 100%;
   height: 1px;
-  background: linear-gradient(90deg, rgba(116, 211, 255, 0.7), rgba(255, 255, 255, 0.18), transparent);
+  background: linear-gradient(90deg, rgba(31, 111, 158, 0.44), rgba(255, 255, 255, 0.8), transparent);
 }
 
 .identity {
@@ -170,7 +177,7 @@ body::before {
 
 .eyebrow {
   margin: 0 0 10px;
-  color: var(--sky);
+  color: #176f9e;
   font-size: 0.76rem;
   font-weight: 700;
   letter-spacing: 0.14em;
@@ -179,7 +186,7 @@ body::before {
 
 h1 {
   margin: 0;
-  color: var(--white);
+  color: var(--ink);
   font-size: clamp(2rem, 8vw, 3rem);
   line-height: 0.98;
   letter-spacing: 0;
@@ -187,7 +194,7 @@ h1 {
 
 .role {
   margin: 13px 0 0;
-  color: #dce7ef;
+  color: var(--ink-soft);
   font-size: clamp(1rem, 3.8vw, 1.14rem);
   line-height: 1.4;
 }
@@ -218,30 +225,31 @@ h1 {
   align-items: center;
   justify-content: center;
   gap: 9px;
-  border: 1px solid rgba(116, 211, 255, 0.2);
+  border: 1px solid rgba(40, 91, 123, 0.2);
   border-radius: 15px;
-  background: rgba(255, 255, 255, 0.055);
-  color: var(--white);
+  background: rgba(255, 255, 255, 0.56);
+  color: var(--ink);
   font: inherit;
   font-size: 0.95rem;
   font-weight: 700;
   text-decoration: none;
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.09);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.76), 0 8px 18px rgba(38, 76, 100, 0.07);
   transition: transform 180ms ease, border-color 180ms ease, background 180ms ease, box-shadow 180ms ease;
   -webkit-tap-highlight-color: transparent;
 }
 
 .action-primary {
   min-height: 54px;
-  border-color: rgba(116, 211, 255, 0.48);
-  background: linear-gradient(135deg, rgba(29, 109, 158, 0.92), rgba(111, 201, 239, 0.2));
-  box-shadow: 0 14px 34px rgba(29, 109, 158, 0.28), inset 0 1px 0 rgba(255, 255, 255, 0.18);
+  border-color: rgba(26, 98, 143, 0.48);
+  background: linear-gradient(135deg, #155c87, #2681b1);
+  color: #f8fcff;
+  box-shadow: 0 14px 34px rgba(24, 104, 151, 0.22), inset 0 1px 0 rgba(255, 255, 255, 0.28);
 }
 
 .action:hover,
 .share-button:hover {
-  border-color: rgba(116, 211, 255, 0.5);
-  background: rgba(116, 211, 255, 0.11);
+  border-color: rgba(26, 98, 143, 0.42);
+  background: rgba(232, 243, 249, 0.86);
   transform: translateY(-2px);
 }
 
@@ -252,7 +260,7 @@ h1 {
 
 .action:focus-visible,
 .share-button:focus-visible {
-  outline: 3px solid rgba(116, 211, 255, 0.44);
+  outline: 3px solid rgba(31, 111, 158, 0.34);
   outline-offset: 3px;
 }
 
@@ -277,7 +285,7 @@ h1 {
 .share-button {
   width: 100%;
   margin-top: 14px;
-  color: #d6edf8;
+  color: #16344a;
 }
 
 .share-button[hidden] {
@@ -286,7 +294,7 @@ h1 {
 
 .tap-note {
   margin: 16px 0 0;
-  color: rgba(246, 251, 255, 0.58);
+  color: rgba(7, 26, 45, 0.48);
   font-size: 0.82rem;
   font-weight: 650;
   letter-spacing: 0.1em;
@@ -311,7 +319,7 @@ h1 {
     translate: 0 0;
   }
   50% {
-    translate: 0 -8px;
+    translate: 0 -5px;
   }
 }
 
