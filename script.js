@@ -34,12 +34,16 @@ function setTilt(xRatio, yRatio, strength = 5) {
   const rotateX = (0.5 - yRatio) * strength;
   card.style.setProperty("--rx", `${rotateX.toFixed(2)}deg`);
   card.style.setProperty("--ry", `${rotateY.toFixed(2)}deg`);
+  card.style.setProperty("--shine-x", `${Math.round(xRatio * 100)}%`);
+  card.style.setProperty("--shine-y", `${Math.round(yRatio * 100)}%`);
 }
 
 function resetTilt() {
   if (!card || prefersReducedMotion) return;
   card.style.setProperty("--rx", "0deg");
   card.style.setProperty("--ry", "0deg");
+  card.style.setProperty("--shine-x", "50%");
+  card.style.setProperty("--shine-y", "18%");
 }
 
 if (card && !prefersReducedMotion) {
@@ -65,7 +69,7 @@ if (card && !prefersReducedMotion) {
     if (event.gamma == null || event.beta == null) return;
     const xRatio = Math.min(Math.max((event.gamma + 18) / 36, 0), 1);
     const yRatio = Math.min(Math.max((event.beta - 20) / 50, 0), 1);
-    setTilt(xRatio, yRatio, 2.6);
+    setTilt(xRatio, yRatio, 3.4);
   });
 }
 
